@@ -162,9 +162,9 @@ func (s *reportService) generateFileName(opts model.ReportOptions) string {
 	if opts.Date != "" {
 		monthAndYear = strings.Replace(opts.Date, "/", "_", 1)
 	} else {
-		// Usa o mês anterior como padrão
-		previousMonth := now.AddDate(0, -1, 0)
-		monthAndYear = previousMonth.Format("01_2006")
+		// Usa a data atual como padrão (o conteúdo se refere ao mês anterior,
+		// mas o nome do arquivo identifica quando o relatório foi emitido).
+		monthAndYear = now.Format("01_2006")
 	}
 
 	if opts.Name == "" {
